@@ -717,14 +717,13 @@ ModelInferHandler::Process(InferHandler::State* state, bool rpc_ok)
       StartNewRequest();
     }
 
-#ifdef TRITON_ENABLE_TRACING
-    // Can't create trace as we don't know the model to be requested,
-    // track timestamps in 'state'
-    state->trace_timestamps_.emplace_back(
-        std::make_pair("GRPC_WAITREAD_END", TraceManager::CaptureTimestamp()));
-#endif  // TRITON_ENABLE_TRACING
-
     if (ExecutePrecondition(state)) {
+#ifdef TRITON_ENABLE_TRACING
+      // Can't create trace as we don't know the model to be requested,
+      // track timestamps in 'state'
+      state->trace_timestamps_.emplace_back(std::make_pair(
+          "GRPC_WAITREAD_END", TraceManager::CaptureTimestamp()));
+#endif  // TRITON_ENABLE_TRACING
       Execute(state);
     } else {
       ::grpc::Status status = ::grpc::Status(
