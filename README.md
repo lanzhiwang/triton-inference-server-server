@@ -42,48 +42,75 @@ batched, ensembles and audio/video streaming. Triton inference Server is part of
 [NVIDIA AI Enterprise](https://www.nvidia.com/en-us/data-center/products/ai-enterprise/),
 a software platform that accelerates the data science pipeline and streamlines
 the development and deployment of production AI.
+Triton Inference Server 是一款开源推理服务软件，可简化 AI 推理。
+Triton 使团队能够部署来自多个深度学习和机器学习框架的任何 AI 模型，包括 TensorRT、TensorFlow、PyTorch、ONNX、OpenVINO、Python、RAPIDS FIL 等。
+Triton 推理服务器支持在 NVIDIA GPU、x86 和 ARM CPU 或 AWS Inferentia 上跨云、数据中心、边缘和嵌入式设备进行推理。
+Triton 推理服务器为许多查询类型提供优化的性能，包括实时、批量、集成和音频/视频流。
+Triton 推理服务器是 NVIDIA AI Enterprise 的一部分，NVIDIA AI Enterprise 是一个软件平台，可加速数据科学管道并简化生产型 AI 的开发和部署。
 
 Major features include:
 
-- [Supports multiple deep learning
-  frameworks](https://github.com/triton-inference-server/backend#where-can-i-find-all-the-backends-that-are-available-for-triton)
-- [Supports multiple machine learning
-  frameworks](https://github.com/triton-inference-server/fil_backend)
-- [Concurrent model
-  execution](docs/user_guide/architecture.md#concurrent-model-execution)
+- [Supports multiple deep learning frameworks](https://github.com/triton-inference-server/backend#where-can-i-find-all-the-backends-that-are-available-for-triton)
+  支持多种深度学习框架
+
+- [Supports multiple machine learning frameworks](https://github.com/triton-inference-server/fil_backend)
+  支持多种机器学习框架
+
+- [Concurrent model execution](docs/user_guide/architecture.md#concurrent-model-execution)
+  并发模型执行
+
 - [Dynamic batching](docs/user_guide/model_configuration.md#dynamic-batcher)
+  动态配料
+
 - [Sequence batching](docs/user_guide/model_configuration.md#sequence-batcher) and
   [implicit state management](docs/user_guide/architecture.md#implicit-state-management)
   for stateful models
+  有状态模型的序列批处理和隐式状态管理
+
 - Provides [Backend API](https://github.com/triton-inference-server/backend) that
   allows adding custom backends and pre/post processing operations
+  提供后端 API，允许添加自定义后端和前/后处理操作
+
 - Supports writing custom backends in python, a.k.a.
   [Python-based backends.](https://github.com/triton-inference-server/backend/blob/r23.11/docs/python_based_backends.md#python-based-backends)
+  支持用 python 编写自定义后端，即基于 Python 的后端。
+
 - Model pipelines using
   [Ensembling](docs/user_guide/architecture.md#ensemble-models) or [Business
   Logic Scripting
   (BLS)](https://github.com/triton-inference-server/python_backend#business-logic-scripting)
+  使用集成或业务逻辑脚本 (BLS) 对管道进行建模
+
 - [HTTP/REST and GRPC inference
   protocols](docs/customization_guide/inference_protocols.md) based on the community
   developed [KServe
   protocol](https://github.com/kserve/kserve/tree/master/docs/predict-api/v2)
+  基于社区开发的KServe协议的HTTP/REST和GRPC推理协议
+
 - A [C API](docs/customization_guide/inference_protocols.md#in-process-triton-server-api) and
   [Java API](docs/customization_guide/inference_protocols.md#java-bindings-for-in-process-triton-server-api)
   allow Triton to link directly into your application for edge and other in-process use cases
+  C API 和 Java API 允许 Triton 直接链接到您的应用程序以实现边缘和其他进程内用例
+
 - [Metrics](docs/user_guide/metrics.md) indicating GPU utilization, server
   throughput, server latency, and more
+  指示 GPU 利用率、服务器吞吐量、服务器延迟等的指标
 
 **New to Triton Inference Server?** Make use of
 [these tutorials](https://github.com/triton-inference-server/tutorials)
 to begin your Triton journey!
+Triton 推理服务器新手？ 利用这些教程开始您的 Triton 之旅！
 
 Join the [Triton and TensorRT community](https://www.nvidia.com/en-us/deep-learning-ai/triton-tensorrt-newsletter/) and
 stay current on the latest product updates, bug fixes, content, best practices,
 and more.  Need enterprise support?  NVIDIA global support is available for Triton
 Inference Server with the
 [NVIDIA AI Enterprise software suite](https://www.nvidia.com/en-us/data-center/products/ai-enterprise/).
+加入 Triton 和 TensorRT 社区，随时了解最新的产品更新、错误修复、内容、最佳实践等。 需要企业支持吗？
+借助 NVIDIA AI Enterprise 软件套件，Triton 推理服务器可获得 NVIDIA 全球支持。
 
 ## Serve a Model in 3 Easy Steps
+只需 3 个简单步骤即可为模型提供服务
 
 ```bash
 # Step 1: Create the example model repository
@@ -105,14 +132,18 @@ Image '/workspace/images/mug.jpg':
     13.224326 (968) = CUP
     10.422965 (505) = COFFEEPOT
 ```
+
 Please read the [QuickStart](docs/getting_started/quickstart.md) guide for additional information
 regarding this example. The quickstart guide also contains an example of how to launch Triton on [CPU-only systems](docs/getting_started/quickstart.md#run-on-cpu-only-system). New to Triton and wondering where to get started? Watch the [Getting Started video](https://youtu.be/NQDtfSi5QF4).
+请阅读快速入门指南以获取有关此示例的更多信息。 快速入门指南还包含如何在纯 CPU 系统上启动 Triton 的示例。 Triton 新手，想知道从哪里开始？ 观看入门视频。
 
 ## Examples and Tutorials
+示例和教程
 
 Check out [NVIDIA LaunchPad](https://www.nvidia.com/en-us/data-center/products/ai-enterprise-suite/trial/)
 for free access to a set of hands-on labs with Triton Inference Server hosted on
 NVIDIA infrastructure.
+查看 NVIDIA LaunchPad，免费访问一组动手实验室，其中包含托管在 NVIDIA 基础设施上的 Triton 推理服务器。
 
 Specific end-to-end examples for popular models, such as ResNet, BERT, and DLRM
 are located in the
@@ -120,6 +151,7 @@ are located in the
 page on GitHub. The
 [NVIDIA Developer Zone](https://developer.nvidia.com/nvidia-triton-inference-server)
 contains additional documentation, presentations, and examples.
+ResNet、BERT 和 DLRM 等流行模型的具体端到端示例位于 GitHub 上的 NVIDIA 深度学习示例页面。 NVIDIA 开发者专区包含其他文档、演示文稿和示例。
 
 ## Documentation
 
